@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <meta charset="utf-8">  
-    <script src="Untitled-1.js"> 
 
-    </script>
 <head>
-
+    <meta charset="utf-8">  
+    <link rel="stylesheet" href="style.css"/>
+    <script src="Untitled-1.js"> 
+    
+    </script>
 </head>
 
 
 <body>
-
-
+   
+    <div class="formClass">
+    <form>
+        Enter score: <input type="number"  id="myInput" value = 0 onkeydown="return event.keyCode !== 69" min="0" required />
+        <br>
+       
+        <input type="submit"  onclick="callWindow()" id="myBtn" class="formButton" >
+        
+        </form>
+       
+    </div>
+        </button>
+           <div id="destination"></div>
+           
 </body>
 
 </html> 
