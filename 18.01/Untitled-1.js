@@ -86,6 +86,96 @@ function writeResult(number) {
 }
 
 
-
+class SortUtils {
+  
+    constructor() {
+     console.log("Constructor for SortUtils"); 
+    }
+   
+    sortAscending(n) {
+      var cycle = false;
+      while (!cycle) {
+          cycle = true;
+          for (var i = 0; i < n.length; i++) {
+              if (n[i - 1] > n[i]) {
+                  cycle = false;
+                  var temporary = n[i - 1];
+                  n[i - 1] = n[i];
+                  n[i] = temporary;
+              }
+          }
+      }
+  
+      return n;
+    }
+    
+    sortDescending(n) {
+      for (var i = 1; i < n.length; i++) {
+          var temporary = n[i];
+          for (var j = i - 1; j >= 0 && (n[j] < temporary); j--) {
+              n[j + 1] = n[j];
+          }
+          n[j + 1] = temporary;
+      }
+      return n;
+    }
+  }
+   
+   class AdvancedArray extends SortUtils {
+      arr = [];
+      name = "unknown";
+    
+        constructor(initArray, arrayName) {
+        super();
+        console.log("Constructor for AdvancedArray");
+        if (Array.isArray(initArray)) {
+            this.arr = initArray;
+        } else {
+         console.error("Class initializer should be an array not " + typeof initArray); 
+        }
+        if(arrayName) {
+          this.name = arrayName
+        }
+        
+        // Bind class this to each function
+        this.sortAsc = this.sortAsc.bind(this);
+        this.srotDsc = this.sortDsc.bind(this);
+      }
+    
+        sortAsc() {
+        this.arr = super.sortAscending(this.arr);
+      }
+    
+        sortDsc() {
+       this.arr = super.sortDescending(this.arr);
+      }
+    
+        getArray = () => {
+        return this.arr;
+      }
+    
+        getName = () => {
+        return this.name;
+      }
+    
+        setName = (name) => {
+       this.name = name; 
+      }
+   
+   }
+  
+   const brrAdvanced = new AdvancedArray(brr);
+   
+   console.log(brrAdvanced.getName()); // unknown
+   brrAdvanced.setName("My new name");
+   
+   brrAdvanced.sortAsc();
+    
+   console.log(brrAdvanced.getArray());
+   brrAdvanced.sortDsc();
+   console.log(brrAdvanced.getArray());
+    
+    
+    
     
     
